@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tier 3 Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+
+        .section {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .key-points {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .text-muted {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tier 3 Result</h1>
+
+        <!-- Section for Question 1 -->
+        <div class="section">
+            <h2>Evaluation for Question 1 (Essay)</h2>
+            <p><strong>Word Count:</strong> {{ result1['Word_Count'] if result1['Word_Count'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <table>
+                <tr><th>Criteria</th><th>Marks</th><th>Comments</th></tr>
+                <tr>
+                    <td>Relevance</td>
+                    <td>{{ result1['Relevance_Marks'][0] if result1['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Relevance_Marks'][1] if result1['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Spelling & Grammar</td>
+                    <td>{{ result1['Spelling_Grammar_Marks'][0] if result1['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Spelling_Grammar_Marks'][1] if result1['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Word Limit</td>
+                    <td>{{ result1['Word_Limit_Marks'][0] if result1['Word_Limit_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Word_Limit_Marks'][1] if result1['Word_Limit_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Content Quality</td>
+                    <td>{{ result1['Content_Quality_Marks'][0] if result1['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Content_Quality_Marks'][1] if result1['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Format</td>
+                    <td>{{ result1['Format_Marks'][0] if result1['Format_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Format_Marks'][1] if result1['Format_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Writing and Neatness</td>
+                    <td>{{ result1['Writing_Neatness_Marks'][0] if result1['Writing_Neatness_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Writing_Neatness_Marks'][1] if result1['Writing_Neatness_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Effective Sentences</td>
+                    <td>{{ result1['Effective_Sentences_Marks'][0] if result1['Effective_Sentences_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Effective_Sentences_Marks'][1] if result1['Effective_Sentences_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Cohesiveness</td>
+                    <td>{{ result1['Cohesiveness_Marks'][0] if result1['Cohesiveness_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result1['Cohesiveness_Marks'][1] if result1['Cohesiveness_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+            </table>
+            <p><strong>Total Marks:</strong> {{ result1['Total_Marks'][0] if result1['Total_Marks'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <h3>Strengths:</h3>
+            <ul class="key-points">
+                {% for strength in result1['Strengths'] %}
+                <li>{{ strength }}</li>
+                {% else %}
+                <li><span class="text-muted">No strengths available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Weaknesses:</h3>
+            <ul class="key-points">
+                {% for weakness in result1['Weaknesses'] %}
+                <li>{{ weakness }}</li>
+                {% else %}
+                <li><span class="text-muted">No weaknesses available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Model Answer:</h3>
+            <p>{{ result1['50_Marks_Answer'] if result1['50_Marks_Answer'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+        </div>
+
+        
+        <div class="section">
+            <h2>Evaluation for Question 2 (Letter)</h2>
+            <p><strong>Word Count:</strong> {{ result2['Word_Count'] if result2['Word_Count'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <table>
+                <tr><th>Criteria</th><th>Marks</th><th>Comments</th></tr>
+                <tr>
+                    <td>Relevance</td>
+                    <td>{{ result2['Relevance_Marks'][0] if result2['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Relevance_Marks'][1] if result2['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Spelling & Grammar</td>
+                    <td>{{ result2['Spelling_Grammar_Marks'][0] if result2['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Spelling_Grammar_Marks'][1] if result2['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Word Limit</td>
+                    <td>{{ result2['Word_Limit_Marks'][0] if result2['Word_Limit_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Word_Limit_Marks'][1] if result2['Word_Limit_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Content Quality</td>
+                    <td>{{ result2['Content_Quality_Marks'][0] if result2['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Content_Quality_Marks'][1] if result2['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Format</td>
+                    <td>{{ result2['Format_Marks'][0] if result2['Format_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Format_Marks'][1] if result2['Format_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Writing and Neatness</td>
+                    <td>{{ result2['Writing_Neatness_Marks'][0] if result2['Writing_Neatness_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Writing_Neatness_Marks'][1] if result2['Writing_Neatness_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Effective Sentences</td>
+                    <td>{{ result2['Effective_Sentences_Marks'][0] if result2['Effective_Sentences_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Effective_Sentences_Marks'][1] if result2['Effective_Sentences_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Cohesiveness</td>
+                    <td>{{ result2['Cohesiveness_Marks'][0] if result2['Cohesiveness_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Cohesiveness_Marks'][1] if result2['Cohesiveness_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                
+            </table>
+            <p><strong>Total Marks:</strong> {{ result2['Total_Marks'][0] if result2['Total_Marks'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <h3>Strengths:</h3>
+            <ul class="key-points">
+                {% for strength in result2['Strengths'] %}
+                <li>{{ strength }}</li>
+                {% else %}
+                <li><span class="text-muted">No strengths available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Weaknesses:</h3>
+            <ul class="key-points">
+                {% for weakness in result2['Weaknesses'] %}
+                <li>{{ weakness }}</li>
+                {% else %}
+                <li><span class="text-muted">No weaknesses available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Model Answer:</h3>
+            <p>{{ result2['50_Marks_Answer'] if result2['50_Marks_Answer'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+        </div>
+        <!-- Back to Home -->
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

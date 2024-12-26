@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tier 1 Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Tier 1 Result</h1>
+    <p>Your score is: {{ score }}/80</p>
+    {% if pass_tier1 %}
+    <button onclick="location.href='/tier2'">Go to Tier 2</button>
+    {% else %}
+    <button onclick="location.href='/tier1'">Back to Tier 1</button>
+    {% endif %}
+</body>
+</html>

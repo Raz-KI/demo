@@ -1,0 +1,42 @@
+<div class="section">
+            <h2>Evaluation for Question 1 (Essay)</h2>
+            <p><strong>Word Count:</strong> {{ result2['Word_Count'] if result2['Word_Count'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <table>
+                <tr><th>Criteria</th><th>Marks</th><th>Comments</th></tr>
+                <tr>
+                    <td>Relevance</td>
+                    <td>{{ result2['Relevance_Marks'][0] if result2['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Relevance_Marks'][1] if result2['Relevance_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Spelling & Grammar</td>
+                    <td>{{ result2['Spelling_Grammar_Marks'][0] if result2['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Spelling_Grammar_Marks'][1] if result2['Spelling_Grammar_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <td>Content Quality</td>
+                    <td>{{ result2['Content_Quality_Marks'][0] if result2['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ result2['Content_Quality_Marks'][1] if result2['Content_Quality_Marks'] != 'N/A' else 'N/A' }}</td>
+                </tr>
+                <!-- Repeat for other criteria -->
+            </table>
+            <p><strong>Total Marks:</strong> {{ result2['Total_Marks'][0] if result2['Total_Marks'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+            <h3>Strengths:</h3>
+            <ul class="key-points">
+                {% for strength in result2['Strengths'] %}
+                <li>{{ strength }}</li>
+                {% else %}
+                <li><span class="text-muted">No strengths available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Weaknesses:</h3>
+            <ul class="key-points">
+                {% for weakness in result2['Weaknesses'] %}
+                <li>{{ weakness }}</li>
+                {% else %}
+                <li><span class="text-muted">No weaknesses available</span></li>
+                {% endfor %}
+            </ul>
+            <h3>Model Answer:</h3>
+            <p>{{ result2['50_Marks_Answer'] if result2['50_Marks_Answer'] != 'N/A' else '<span class="text-muted">N/A</span>' }}</p>
+        </div>

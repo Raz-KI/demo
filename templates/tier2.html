@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tier 2 Exam</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Tier 2</h1>
+    <form method="POST" action="/tier2_result">
+        {% for section in questions %}
+        <h2>{{ section['section'] }}</h2>
+        {% for question in section['data'] %}
+        <div>
+            <p>{{ question['question'] }}</p>
+            {% if question['image'] %}
+            <img src="{{ url_for('static', filename=question['image']) }}" alt="Question Image">
+            {% endif %}
+            <br>
+            {% for option in question['options'] %}
+            <label>
+                <input type="radio" name="{{ question['question'] }}" value="{{ option }}">
+                {% if '.png' in option or '.jpg' in option or '.jpeg' in option %}
+                    <img src="{{ url_for('static', filename=option) }}" alt="Option Image" style="width: 150px; height: auto;">
+                {% else %}
+                    {{ option }}
+                {% endif %}
+            </label><br>
+        {% endfor %}
+        </div>
+        {% endfor %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+    
